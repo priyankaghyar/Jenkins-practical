@@ -17,26 +17,26 @@ Pre-Requisites:
 •	Java (JDK)
 Run the below commands to install Java and Jenkins
 Install Java
-sudo apt update
-sudo apt install openjdk-17-jre
+
+        sudo apt update
+        sudo apt install openjdk-17-jre
 
 
 Verify Java is Installed
-java -version
+
+        java -version
 
  ![image](https://github.com/user-attachments/assets/c79b4f5d-cc09-46c6-a7fa-a35636da990d)
 
 
 •	Proceed to install Jenkins
 
-curl -fsSL https://pkg.jenkins.io/debian/jenkins.io-2023.key | sudo tee
-/usr/share/keyrings/jenkins-keyring.asc > /dev/null echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc]
-https://pkg.jenkins.io/debian binary/ | sudo tee
-/etc/apt/sources.list.d/jenkins.list > /dev/null 
-
-sudo apt-get update 
-
-sudo apt-get install jenkins
+          curl -fsSL https://pkg.jenkins.io/debian/jenkins.io-2023.key | sudo tee
+          /usr/share/keyrings/jenkins-keyring.asc > /dev/null echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc]
+          https://pkg.jenkins.io/debian binary/ | sudo tee
+         /etc/apt/sources.list.d/jenkins.list > /dev/null 
+         sudo apt-get update 
+         sudo apt-get install jenkins
 
 
  ![image](https://github.com/user-attachments/assets/91e0ccfa-a62b-4e67-8629-c936fca389d7)
@@ -51,9 +51,8 @@ sudo apt-get install jenkins
 
 
 4.	Login the Jenkins using the below URL:
-•	http://:8080 [You can get the ec2-instance-public-ip-address from your AWS EC2 console page]
-•	Note: If you are not interested in allowing All Traffic to your EC2 instance 1. Delete the inbound traffic rule for your instance 2. Edit the inbound traffic rule to only allow custom TCP port 8080
-•	After you login to Jenkins, - Run the command to copy the Jenkins Admin Password - sudo cat /var/lib/jenkins/secrets/initialAdminPassword – 
+•	http://<ec2-ip>:8080 
+•	After you login to Jenkins, - Run command to copy the Jenkins Admin Password - sudo cat /var/lib/jenkins/secrets/initialAdminPassword – 
 •	Enter the Administrator password
 
  ![image](https://github.com/user-attachments/assets/fb0990d9-5001-47c6-9298-c25ef2e6bfc4)
@@ -80,17 +79,20 @@ http://54.81.177.130:8080/
 
 
 7.	Docker Slave Configuration
-              Run the below command to Install Docker
+   Run the below command to Install Docker
+  	
               sudo apt update
              sudo apt install docker.io
 
 Note: Here we are using docker as agent
+
 8.	Grant the Jenkins user and ubuntu user permission to docker daemon
 
- sudo su - 
-usermod -aG docker jenkins
-usermod -aG docker ubuntu
-systemctl restart docker
+            sudo su - 
+            usermod -aG docker jenkins
+            usermod -aG docker ubuntu
+            systemctl restart docker
+
 
 Now Jenkins is able to create the container tried hello-world
 
