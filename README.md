@@ -27,24 +27,25 @@ java -version
  ![image](https://github.com/user-attachments/assets/c79b4f5d-cc09-46c6-a7fa-a35636da990d)
 
 
-•	Now we can proceed to install Jenkins
+•	Proceed to install Jenkins
 
-curl -fsSL https://pkg.jenkins.io/debian/jenkins.io-2023.key | sudo tee \
-  /usr/share/keyrings/jenkins-keyring.asc > /dev/null
-echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
-  https://pkg.jenkins.io/debian binary/ | sudo tee \
-  /etc/apt/sources.list.d/jenkins.list > /dev/null
-sudo apt-get update
+curl -fsSL https://pkg.jenkins.io/debian/jenkins.io-2023.key | sudo tee
+/usr/share/keyrings/jenkins-keyring.asc > /dev/null echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc]
+https://pkg.jenkins.io/debian binary/ | sudo tee
+/etc/apt/sources.list.d/jenkins.list > /dev/null 
+
+sudo apt-get update 
+
 sudo apt-get install jenkins
+
 
  ![image](https://github.com/user-attachments/assets/91e0ccfa-a62b-4e67-8629-c936fca389d7)
 
 
-Note: By default, Jenkins will not be accessible to the external world due to the inbound traffic restriction by AWS. Open port 8080 in the inbound traffic rules as show below.
-•	EC2 > Instances > Click on
-•	In the bottom tabs -> Click on Security
-•	Security groups
-•	Add inbound traffic rules as shown in the image (you can just allow TCP 8080 as well, in my case, I allowed All traffic).
+• Jenkins is installed but it will not allow inbound traffic to the external due to restriction of aws. So, we need to allow the traffic
+•	Go to the running ec2 instance
+•	Go to the below tab security group -> click on that group name -> add the inbound traffic rules.
+
 
  ![image](https://github.com/user-attachments/assets/4c0ed4ef-9f2f-43b4-aff5-5a9e70ac6f4f)
 
